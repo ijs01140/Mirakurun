@@ -1,5 +1,4 @@
 ARG ARCH=
-ARG TARGETARCH
 FROM ${ARCH}node:18.17-bookworm AS build
 WORKDIR /app
 ENV DOCKER=YES NODE_ENV=production
@@ -12,6 +11,7 @@ RUN apt-get update && \
     npm install -g --unsafe-perm --production
 
 FROM ${ARCH}node:18.17-bookworm-slim
+ARG TARGETARCH
 WORKDIR /app
 RUN apt-get update && \
     apt-get upgrade -y && \
