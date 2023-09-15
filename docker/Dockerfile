@@ -1,4 +1,5 @@
 ARG ARCH=
+ARG TARGETARCH
 FROM ${ARCH}node:18.17-bookworm AS build
 WORKDIR /app
 ENV DOCKER=YES NODE_ENV=production
@@ -26,9 +27,14 @@ RUN apt-get update && \
         libdvbv5-dev \
         pcsc-tools \
         dvb-tools \
+        wget \
         && \
+    wget https://github.com/kazuki0824/recisdb-rs/releases/download/1.1.0/recisdb_1.1.0_${TARGETARCH}.deb && \
+    dpkg -i recisdb_1.1.0_${TARGETARCH}.deb && \
+    apt-get autoremove -y wget && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    rm -f recisdb_1.1.0_${TARGETARCH}.deb
 COPY --from=build /usr/local/lib/node_modules/mirakurun /app
 CMD ["./docker/container-init.sh"]
 EXPOSE 40772 9229
