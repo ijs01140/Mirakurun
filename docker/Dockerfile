@@ -36,6 +36,7 @@ RUN apt-get update && \
     apt-get autoremove -y wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
+    rm -f libaribb25_0.2.9_${TARGETARCH}.deb && \
     rm -f recisdb_1.2.0rc.2-1_${TARGETARCH}.deb
 COPY --from=build /usr/local/lib/node_modules/mirakurun /app
 CMD ["./docker/container-init.sh"]
