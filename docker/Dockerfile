@@ -31,7 +31,7 @@ RUN apt-get update && \
         && \
     wget https://github.com/tsukumijima/libaribb25/releases/download/v0.2.9/libaribb25_0.2.9_${TARGETARCH}.deb && \
     apt install ./libaribb25_0.2.9_${TARGETARCH}.deb && \
-    wget https://github.com/kazuki0824/recisdb-rs/releases/download/1.2.0-rc.3/recisdb_1.2.1-1_${TARGETARCH}.deb && \
+    wget https://github.com/kazuki0824/recisdb-rs/releases/download/1.2.1/recisdb_1.2.1-1_${TARGETARCH}.deb && \
     dpkg -i recisdb_1.2.1-1_${TARGETARCH}.deb && \
     apt-get autoremove -y wget && \
     apt-get clean && \
