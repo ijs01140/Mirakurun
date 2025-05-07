@@ -11,6 +11,7 @@ RUN apt-get update && \
     npm ci --omit=dev
 
 FROM ${ARCH}node:22.14.0-bookworm-slim
+ARG TARGETARCH
 WORKDIR /app
 RUN apt-get update && \
     apt-get upgrade -y && \
