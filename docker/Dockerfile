@@ -28,12 +28,12 @@ RUN apt-get update && \
         dvb-tools \
         wget \
         && \
-    wget https://github.com/kazuki0824/recisdb-rs/releases/download/1.2.1/recisdb_1.2.1-1_${TARGETARCH}.deb && \
-    dpkg -i recisdb_1.2.1-1_${TARGETARCH}.deb && \
+    wget https://github.com/kazuki0824/recisdb-rs/releases/download/1.2.3/recisdb_1.2.3-1_${TARGETARCH}.deb && \
+    dpkg -i recisdb_1.2.3-1_${TARGETARCH}.deb && \
     apt-get autoremove -y wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -f recisdb_1.2.1-1_${TARGETARCH}.deb
+    rm -f recisdb_1.2.3-1_${TARGETARCH}.deb
 COPY --from=build /app /app
 CMD ["./docker/container-init.sh"]
 EXPOSE 40772 9229
